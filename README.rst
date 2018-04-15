@@ -1,3 +1,27 @@
+Note
+====
+
+This is a clone of the official `pypa manylinux project`__
+incorporating the changes outlined for the upcoming manylinux2010
+standard (`PEP 571`__).  These are mainly from an official pull
+request, but I've also made some changes/improvements of my own.
+
+As such, while I've made the necessary modificiations to the
+repository, it's **in no way authoritative**.  All modifications by me
+are licensed under the same MIT license as the original project.
+
+You can use the script ``build-images.sh`` to create your docker images.
+
+In the future and depending on need, this repository may be rebased,
+discontinued or spun off entirely.  I'll update this note/readme
+accordingly.
+
+What follows is the (now outdated) original readme.
+
+__ https://github.com/pypa/manylinux
+__ https://www.python.org/dev/peps/pep-0571/
+
+
 manylinux
 =========
 
