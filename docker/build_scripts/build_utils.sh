@@ -35,9 +35,9 @@ function do_cpython_build {
     fi
     local prefix="/opt/_internal/cpython-${py_ver}${dir_suffix}"
     mkdir -p ${prefix}/lib
-    ./configure --prefix=${prefix} --disable-shared $unicode_flags > /dev/null
-    make -j2 > /dev/null
-    make install > /dev/null
+    ./configure --prefix=${prefix} --disable-shared $unicode_flags
+    make -j2
+    make install
     popd
     rm -rf Python-$py_ver
     # Some python's install as bin/python3. Make them available as
@@ -94,9 +94,9 @@ function build_cpythons {
 
 
 function do_openssl_build {
-    ./config no-ssl2 no-shared -fPIC --prefix=/usr/local/ssl > /dev/null
-    make > /dev/null
-    make install_sw > /dev/null
+    ./config no-ssl2 no-shared -fPIC --prefix=/usr/local/ssl
+    make
+    make install_sw
 }
 
 
@@ -160,7 +160,7 @@ function build_git {
     fetch_source v${git_fname}.tar.gz ${GIT_DOWNLOAD_URL}
     check_sha256sum v${git_fname}.tar.gz ${git_sha256}
     tar -xzf v${git_fname}.tar.gz
-    (cd git-${git_fname} && make install prefix=/usr/local LDFLAGS="-L/usr/local/ssl/lib -ldl" CFLAGS="-I/usr/local/ssl/include" > /dev/null)
+    (cd git-${git_fname} && make install prefix=/usr/local LDFLAGS="-L/usr/local/ssl/lib -ldl" CFLAGS="-I/usr/local/ssl/include")
     rm -rf git-${git_fname} v${git_fname}.tar.gz
 }
 
@@ -168,9 +168,9 @@ function build_git {
 function do_curl_build {
     # We do this shared to avoid obnoxious linker issues where git couldn't
     # link properly. If anyone wants to make this build statically go for it.
-    LIBS=-ldl CFLAGS=-Wl,--exclude-libs,ALL ./configure --with-ssl --disable-static > /dev/null
-    make > /dev/null
-    make install > /dev/null
+    LIBS=-ldl CFLAGS=-Wl,--exclude-libs,ALL ./configure --with-ssl --disable-static
+    make
+    make install
 }
 
 
@@ -190,9 +190,9 @@ function build_curl {
 
 
 function do_standard_install {
-    ./configure > /dev/null
-    make > /dev/null
-    make install > /dev/null
+    ./configure
+    make
+    make install
 }
 
 
